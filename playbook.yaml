@@ -8,6 +8,11 @@
     - name: Display something
       ansible.builtin.debug:
         msg: display something here
+
+    - name: Display something extra
+      ansible.builtin.debug:
+        msg: Display something extra here
+
     - name: Display motd
       ansible.builtin.template:
         src: templates/motd.j2
