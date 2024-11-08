@@ -1,0 +1,15 @@
+---
+- name: Create configuration file 
+  hosts: all
+  tasks:
+  - name: Create the config file
+    template:
+     src: /home/student/ansible-scripts/templates/playbook31.j2
+     dest: /etc/my_config.conf
+     mode: 0644
+    vars:
+     my_servers:
+     - node1
+     - node2
+     - node3
+

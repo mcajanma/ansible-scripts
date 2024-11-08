@@ -1,0 +1,29 @@
+---
+ - name: Experimenting the variable in the same playbook
+   hosts: all
+   vars_files:
+     - /home/student/ansible-scripts/variable.yaml
+
+   tasks:
+    - name: install a package {{ pkg }} of httpd
+      yum:
+       name: "{{ pkg }}"
+       state: present
+
+    - name: create a webpage
+      copy:
+        content: "Hi today i am learning ansible variables"
+        dest: /var/www/html/index.html 
+
+    - name: Start the service with the package
+      service:
+        name: "{{ pkg }}"
+        state: started 
+        enabled: true 
+
+    - name: Add aa user {{ user }}
+      user:
+        name: "{{ usr }}"
+        uid: 30003
+        state: present 
+
